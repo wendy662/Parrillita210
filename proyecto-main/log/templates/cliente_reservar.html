@@ -126,13 +126,6 @@
       <label for="comentarios">📝 Comentarios</label>
       <textarea id="comentarios" name="comentarios" rows="3" placeholder="Detalles adicionales"></textarea>
 
-      <label for="id_mesa">🍽 Mesa</label>
-      <select id="id_mesa" name="id_mesa" required>
-        {% for mesa in mesas %}
-          <option value="{{ mesa.id_mesa }}">Mesa {{ mesa.numero }} - Capacidad: {{ mesa.capacidad }}</option>
-        {% endfor %}
-      </select>
-
       <label for="telefono">📞 Teléfono</label>
       <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" required placeholder="Ej: 3112345678">
 
@@ -189,7 +182,7 @@
       return false;
     }
 
-    // ✨ Mostrar datos en el modal con formato bonito
+    //  Mostrar datos en el modal con un formato chevere
     document.getElementById("reserva-nombre").innerText = nombre;
     document.getElementById("resumen-personas").innerText = personas;
     document.getElementById("resumen-fecha").innerText = formatearFecha(fecha);
@@ -202,19 +195,18 @@
     return false;
   }
 
-  // 📌 Función para enviar el formulario real al dar "Finalizar"
+  // Función para enviar el formulario al dar "Finalizar"
   function enviarReserva() {
     document.querySelector("form").submit();
   }
 
-  // 📅 Formatear fecha para que salga "Marzo 23"
   function formatearFecha(fechaISO) {
     const fecha = new Date(fechaISO);
     const opciones = { day: 'numeric', month: 'long' };
     return fecha.toLocaleDateString('es-ES', opciones);
   }
 
-  // 🕒 Formatear hora a formato 12h con am/pm
+
   function formatearHora(hora24) {
     let [h, m] = hora24.split(':');
     h = parseInt(h);
@@ -223,7 +215,7 @@
     return `${h}:${m} ${sufijo}`;
   }
 
-  // 📆 Restringir fecha mínima (mañana)
+
   document.addEventListener("DOMContentLoaded", () => {
     const fechaInput = document.getElementById("fecha");
     const hoy = new Date();
